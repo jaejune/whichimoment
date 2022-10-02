@@ -1,0 +1,18 @@
+{
+  "indexes": [
+    {
+      "collectionGroup": "person",
+      "queryScope": "COLLECTION",
+      "fields": [
+        {
+          "fieldPath": "whoU",
+          "order": "ASCENDING"
+        },
+        {
+          "fieldPath": "created_time",
+          "order": "ASCENDING"
+        }
+      ]
+    }
+  ]
+}

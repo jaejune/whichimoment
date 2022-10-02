@@ -1,0 +1,142 @@
+rules_version = '2';
+service cloud.firestore {
+  match /databases/{database}/documents {
+    match /person/{document} {
+      allow create: if true;
+      allow read: if true;
+      allow write: if false;
+      allow delete: if false;
+    }
+
+    match /company/{document} {
+      allow create: if true;
+      allow read: if true;
+      allow write: if false;
+      allow delete: if false;
+    }
+
+    match /contents/{document} {
+      allow create: if true;
+      allow read: if true;
+      allow write: if false;
+      allow delete: if false;
+    }
+
+    match /which/{document} {
+      allow create: if true;
+      allow read: if true;
+      allow write: if false;
+      allow delete: if false;
+    }
+
+    match /Post1/{document} {
+      allow create: if true;
+      allow read: if true;
+      allow write: if false;
+      allow delete: if false;
+    }
+
+    match /Post1/{parent}/afterSay1/{document} {
+      allow create: if true;
+      allow read: if true;
+      allow write: if false;
+      allow delete: if false;
+    }
+
+    match /{path=**}/afterSay1/{document} {
+      allow read: if true;
+    }
+
+
+    match /afterSay/{document} {
+      allow create: if true;
+      allow read: if true;
+      allow write: if false;
+      allow delete: if false;
+    }
+
+    match /Pro/{document} {
+      allow create: if true;
+      allow read: if true;
+      allow write: if false;
+      allow delete: if false;
+    }
+
+    match /Student/{document} {
+      allow create: if true;
+      allow read: if true;
+      allow write: if false;
+      allow delete: if false;
+    }
+
+    match /Post/{document} {
+      allow create: if true;
+      allow read: if true;
+      allow write: if false;
+      allow delete: if false;
+    }
+
+    match /Companys/{document} {
+      allow create: if true;
+      allow read: if true;
+      allow write: if false;
+      allow delete: if false;
+    }
+
+    match /Notice/{document} {
+      allow create: if true;
+      allow read: if true;
+      allow write: if false;
+      allow delete: if false;
+    }
+
+    match /Recruitment/{document} {
+      allow create: if true;
+      allow read: if true;
+      allow write: if false;
+      allow delete: if false;
+    }
+
+    match /recommend/{document} {
+      allow create: if true;
+      allow read: if true;
+      allow write: if false;
+      allow delete: if false;
+    }
+
+    match /person/{parent}/feelSet/{document} {
+      allow create: if request.auth.uid == parent;
+      allow read: if true;
+      allow write: if request.auth.uid == parent;
+      allow delete: if false;
+    }
+
+    match /person/{parent}/consulatation/{document} {
+      allow create: if request.auth.uid == parent;
+      allow read: if true;
+      allow write: if request.auth.uid == parent;
+      allow delete: if false;
+    }
+
+    match /person/{parent}/notification/{document} {
+      allow create: if request.auth.uid == parent;
+      allow read: if true;
+      allow write: if request.auth.uid == parent;
+      allow delete: if false;
+    }
+
+    match /person/{parent}/pay/{document} {
+      allow create: if request.auth.uid == parent;
+      allow read: if true;
+      allow write: if request.auth.uid == parent;
+      allow delete: if false;
+    }
+
+    match /broadcasts/{document} {
+      allow create: if true;
+      allow read: if true;
+      allow write: if false;
+      allow delete: if false;
+    }
+  }
+}
