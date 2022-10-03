@@ -3,6 +3,7 @@ import 'dart:async';
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
 import 'package:page_transition/page_transition.dart';
+import 'package:whichimoment/jitsi_meet/view/jitsi_meet_screen.dart';
 import '../flutter_flow_theme.dart';
 import '../../backend/backend.dart';
 import '../../auth/firebase_user_provider.dart';
@@ -240,6 +241,11 @@ GoRouter createRouter(AppStateNotifier appStateNotifier) => GoRouter(
               name: 'meet',
               path: 'meet',
               builder: (context, params) => MeetWidget(),
+            ),
+            FFRoute(
+              name: 'jitsi_meet',
+              path: 'jitsi_meet',
+              builder: (context, params) => JitsiMeetScreen(),
             ),
             FFRoute(
               name: 'wellbeinginfo',
