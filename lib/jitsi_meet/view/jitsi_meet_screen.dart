@@ -8,12 +8,19 @@ class JitsiMeetScreen extends StatefulWidget {
   State<JitsiMeetScreen> createState() => _JitsiMeetScreenState();
 }
 
+void hideKeyboard(BuildContext context) {
+  FocusScopeNode currentFocus = FocusScope.of(context);
+  if (!currentFocus.hasPrimaryFocus) {
+    currentFocus.unfocus();
+  }
+}
+
 class _JitsiMeetScreenState extends State<JitsiMeetScreen> {
   final serverText = TextEditingController(text: 'https://hoca.monster/');
   final roomText = TextEditingController(text: "jitsi-meet-wrapper-test-room");
-  final subjectText = TextEditingController(text: "My Plugin Test Meeting");
+  final subjectText = TextEditingController();
   final tokenText = TextEditingController();
-  final userDisplayNameText = TextEditingController(text: "Plugin Test User");
+  final userDisplayNameText = TextEditingController();
   final userEmailText = TextEditingController(text: "fake@email.com");
   final userAvatarUrlText = TextEditingController();
 
@@ -135,58 +142,63 @@ class _JitsiMeetScreenState extends State<JitsiMeetScreen> {
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      backgroundColor: Colors.white,
-      body: SafeArea(
-          child: Container(
-              padding: const EdgeInsets.symmetric(horizontal: 16.0),
-              child: SingleChildScrollView(
-                  child: Column(
-                children: [
-                  Image.asset(
-                    'assets/images/hoca_logo.png',
-                    height: 150,
-                  ),
-                  const SizedBox(height: 16.0),
-                  _buildTextField(labelText: "방제목", controller: subjectText),
-                  const SizedBox(height: 16.0),
-                  _buildTextField(
-                    labelText: "표시 이름",
-                    controller: userDisplayNameText,
-                  ),
-                  const SizedBox(height: 16.0),
-                  CheckboxListTile(
-                    activeColor: Color(0xFF9ACFF4),
-                    title: const Text("오디오 전용"),
-                    value: isAudioOnly,
-                    onChanged: _onAudioOnlyChanged,
-                  ),
-                  const SizedBox(height: 16.0),
-                  CheckboxListTile(
-                    title: const Text("카메라 사용안함"),
-                    activeColor: Color(0xFF9ACFF4),
-                    value: isVideoMuted,
-                    onChanged: _onVideoMutedChanged,
-                  ),
-                  const Divider(height: 48.0, thickness: 2.0),
-                  SizedBox(
-                    height: 64.0,
-                    width: double.maxFinite,
-                    child: ElevatedButton(
-                      onPressed: () => _joinMeeting(),
-                      child: const Text(
-                        "미팅 참여",
-                        style: TextStyle(color: Colors.white, fontSize: 18),
+    return GestureDetector(
+        onTap: () {
+          hideKeyboard(context);
+        },
+        child: Scaffold(
+          backgroundColor: Colors.white,
+          body: SafeArea(
+              child: Container(
+                  padding: const EdgeInsets.symmetric(horizontal: 16.0),
+                  child: SingleChildScrollView(
+                      child: Column(
+                    children: [
+                      Image.asset(
+                        'assets/images/hoca_logo.png',
+                        height: 150,
                       ),
-                      style: ButtonStyle(
-                        backgroundColor: MaterialStateColor.resolveWith(
-                            (states) => Color(0xFF9ACFF4)),
+                      const SizedBox(height: 16.0),
+                      _buildTextField(
+                          labelText: "방제목", controller: subjectText),
+                      const SizedBox(height: 16.0),
+                      _buildTextField(
+                        labelText: "표시 이름",
+                        controller: userDisplayNameText,
                       ),
-                    ),
-                  ),
-                  const SizedBox(height: 48.0),
-                ],
-              )))),
-    );
+                      const SizedBox(height: 16.0),
+                      CheckboxListTile(
+                        activeColor: Color(0xFF9ACFF4),
+                        title: const Text("오디오 전용"),
+                        value: isAudioOnly,
+                        onChanged: _onAudioOnlyChanged,
+                      ),
+                      const SizedBox(height: 16.0),
+                      CheckboxListTile(
+                        title: const Text("카메라 사용안함"),
+                        activeColor: Color(0xFF9ACFF4),
+                        value: isVideoMuted,
+                        onChanged: _onVideoMutedChanged,
+                      ),
+                      const Divider(height: 48.0, thickness: 2.0),
+                      SizedBox(
+                        height: 64.0,
+                        width: double.maxFinite,
+                        child: ElevatedButton(
+                          onPressed: () => _joinMeeting(),
+                          child: const Text(
+                            "미팅 참여",
+                            style: TextStyle(color: Colors.white, fontSize: 18),
+                          ),
+                          style: ButtonStyle(
+                            backgroundColor: MaterialStateColor.resolveWith(
+                                (states) => Color(0xFF9ACFF4)),
+                          ),
+                        ),
+                      ),
+                      const SizedBox(height: 48.0),
+                    ],
+                  )))),
+        ));
   }
 }
