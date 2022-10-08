@@ -1,3 +1,7 @@
+import 'package:kakao_flutter_sdk/kakao_flutter_sdk_talk.dart';
+import 'package:kakao_flutter_sdk/kakao_flutter_sdk_template.dart';
+import 'package:whichimoment/auth/kakao_auth.dart';
+
 import '../auth/auth_util.dart';
 import '../flutter_flow/flutter_flow_drop_down.dart';
 import '../flutter_flow/flutter_flow_theme.dart';
@@ -494,8 +498,7 @@ class _AuthpageWidgetState extends State<AuthpageWidget> {
                                                   mainAxisSize:
                                                       MainAxisSize.max,
                                                   mainAxisAlignment:
-                                                      MainAxisAlignment
-                                                          .spaceEvenly,
+                                                      MainAxisAlignment.center,
                                                   children: [
                                                     InkWell(
                                                       onTap: () async {
@@ -515,6 +518,8 @@ class _AuthpageWidgetState extends State<AuthpageWidget> {
                                                       child: Container(
                                                         width: 50,
                                                         height: 50,
+                                                        margin: EdgeInsets.only(
+                                                            right: 30),
                                                         decoration:
                                                             BoxDecoration(
                                                           color: FlutterFlowTheme
@@ -545,6 +550,21 @@ class _AuthpageWidgetState extends State<AuthpageWidget> {
                                                         ),
                                                       ),
                                                     ),
+                                                    GestureDetector(
+                                                        onTap: () async {
+                                                          String? accessToken =
+                                                              await signInKakao();
+                                                          if (accessToken !=
+                                                              null) {
+                                                            // createCustomToken(
+                                                            //     accessToken);
+                                                          }
+                                                        },
+                                                        child: SizedBox(
+                                                            height: 50,
+                                                            width: 50,
+                                                            child: Image.asset(
+                                                                'assets/icons/kakao.png')))
                                                   ],
                                                 ),
                                               ),

@@ -82,6 +82,8 @@ dependencies:
   # Use with the CupertinoIcons class for iOS style icons.
   cupertino_icons: ^1.0.0
   jitsi_meet_wrapper: ^0.0.5
+  webview_flutter: ^3.0.4
+  kakao_flutter_sdk: ^1.2.2
 
 dev_dependencies:
   build_runner: 2.2.0
@@ -116,6 +118,7 @@ flutter:
     - assets/lottie_animations/
     - assets/rive_animations/
     - assets/pdfs/
+    - assets/icons/
 
   # An image asset can refer to one or more resolution-specific "variants", see
   # https://flutter.dev/assets-and-images/#resolution-aware.

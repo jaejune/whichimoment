@@ -3,6 +3,7 @@ import 'dart:async';
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
 import 'package:page_transition/page_transition.dart';
+import 'package:whichimoment/channel_talk/channel_talk_screen.dart';
 import 'package:whichimoment/jitsi_meet/view/jitsi_meet_screen.dart';
 import '../flutter_flow_theme.dart';
 import '../../backend/backend.dart';
@@ -246,6 +247,11 @@ GoRouter createRouter(AppStateNotifier appStateNotifier) => GoRouter(
               name: 'jitsi_meet',
               path: 'jitsi_meet',
               builder: (context, params) => JitsiMeetScreen(),
+            ),
+            FFRoute(
+              name: 'channel_talk',
+              path: 'channel_talk',
+              builder: (context, params) => ChannelTalkScreen(),
             ),
             FFRoute(
               name: 'wellbeinginfo',

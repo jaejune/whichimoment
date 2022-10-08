@@ -159,7 +159,7 @@ class _MyPageWidgetState extends State<MyPageWidget> {
                             children: [
                               FFButtonWidget(
                                 onPressed: () async {
-                                  context.pushNamed('jitsi_meet');
+                                  context.pushNamed('channel_talk');
                                 },
                                 text: '상담 참여',
                                 options: FFButtonOptions(
